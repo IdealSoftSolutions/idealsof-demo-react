@@ -74,6 +74,19 @@ form .txt_field {
     outline: none;
 }
 
+.logout {
+    width: 75%;
+    height: 50px;
+    border: 1px solid;
+    background: #ff2d55;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
 .pass {
     margin: -5px 0 20px 5px;
     color: #a6a6a6;

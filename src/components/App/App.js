@@ -7,6 +7,7 @@ import AuthorizeApp from '../auth/Services/AuthorizeApp';
 import OAuthPopup from '../auth/Services/OAuth2Popup'
 import PrivateRoutes from '../Routes/PrivateRoutes'
 import UsersNotFound from '../Home/UsersNotFound';
+import Logout from '../auth/Logout';
 
 export default function App() {
     return (
@@ -20,6 +21,7 @@ export default function App() {
                     <Route path='/dashboard' element={<PrivateRoutes />} >
                         <Route path='' element={<Home />} />
                         <Route path='preferences' element={<Preferences />} />
+                        <Route path='logout' element={<Logout />} />
                     </Route>
                     <Route path='*' Component={UsersNotFound} />
                 </Routes>
