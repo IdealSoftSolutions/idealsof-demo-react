@@ -1,17 +1,18 @@
 import React, { useState, useRef } from "react";
 import './Login.css'
 import AuthService from "../Services/auth.service";
+
 import { useNavigate } from "react-router-dom";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/ReactToastify.css";
 
 
 export default function Login() {
     const [userName, setUserName] = useState('')
     const [password, setPassWord] = useState('')
-    const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState("");
+
     const form = useRef();
     const checkBtn = useRef();
     const navigate = useNavigate();
@@ -26,13 +27,8 @@ export default function Login() {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        console.log('handleLogin called')
         form.current.validateAll();
-
-        setMessage("");
-        setLoading(true);
         if (checkBtn.current.context._errors.length === 0) {
-
             AuthService.login(userName, password).then(
                 () => {
                     navigate("/authorize");
@@ -44,9 +40,8 @@ export default function Login() {
                             error.response.data.message) ||
                         error.message ||
                         error.toString();
+                    toast.error(resMessage);
 
-                    setLoading(false);
-                    setMessage(resMessage);
                 }
             );
         }
@@ -72,18 +67,13 @@ export default function Login() {
                 </div>
                 <div className='pass'>Forgot Password?</div>
                 <button type="submit" className="submit">Submit</button>
-                {message && (
-                    <div className="form-group">
-                        <div className="alert alert-danger" role="alert">
-                            {message}
-                        </div>
-                    </div>
-                )}
                 <CheckButton style={{ display: "none" }} ref={checkBtn} />
                 <div className="signup_link">Not a member ?
                     <a href='#'>Signup</a>
                 </div>
+
             </div>
+            <ToastContainer />
         </Form >
     )
 }

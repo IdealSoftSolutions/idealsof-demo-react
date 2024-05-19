@@ -1,12 +1,11 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Dashboard from '../Dashboard/Dashboard';
 import Preferences from '../Preferences/Preferences';
-import Login from '../Login/Login';
+import Login from '../auth/Login/Login';
 import Home from '../Home/Home';
-import AuthorizeApp from '../Services/AuthorizeApp';
-import OAuthPopup from '../Services/OAuth2Popup'
-
+import AuthorizeApp from '../auth/Services/AuthorizeApp';
+import OAuthPopup from '../auth/Services/OAuth2Popup'
+import PrivateRoutes from '../Routes/PrivateRoutes'
 export default function App() {
     return (
         <div className='wrapper'>
@@ -15,10 +14,11 @@ export default function App() {
                     <Route path='/authorize' element={<AuthorizeApp />} />
                     <Route path='/' element={<Login />} />
                     <Route path='/callback' element={<OAuthPopup />} />
-                    <Route path='/home' element={<Home />} />
-                    <Route path='/dashboard' element={<Dashboard />} />
-                    <Route path='/preferences' element={<Preferences />} />
                     <Route path='/login' element={<Login />} />
+                    <Route path='/dashboard' element={<PrivateRoutes />} >
+                        <Route path='' element={<Home />} />
+                        <Route path='preferences' element={<Preferences />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>
