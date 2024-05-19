@@ -6,6 +6,8 @@ import Home from '../Home/Home';
 import AuthorizeApp from '../auth/Services/AuthorizeApp';
 import OAuthPopup from '../auth/Services/OAuth2Popup'
 import PrivateRoutes from '../Routes/PrivateRoutes'
+import UsersNotFound from '../Home/UsersNotFound';
+
 export default function App() {
     return (
         <div className='wrapper'>
@@ -19,6 +21,7 @@ export default function App() {
                         <Route path='' element={<Home />} />
                         <Route path='preferences' element={<Preferences />} />
                     </Route>
+                    <Route path='*' Component={UsersNotFound} />
                 </Routes>
             </BrowserRouter>
         </div>
