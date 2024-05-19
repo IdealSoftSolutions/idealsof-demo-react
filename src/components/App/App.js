@@ -1,4 +1,3 @@
-import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Preferences from '../Preferences/Preferences';
 import Login from '../auth/Login/Login';
@@ -7,12 +6,14 @@ import AuthorizeApp from '../auth/Services/AuthorizeApp';
 import OAuthPopup from '../auth/Services/OAuth2Popup'
 import PrivateRoutes from '../Routes/PrivateRoutes'
 import UsersNotFound from '../Home/UsersNotFound';
-import Logout from '../auth/Logout';
+import Header from '../Header/Header';
+import Footer from '../footer/Footer';
 
 export default function App() {
     return (
         <div className='wrapper'>
             <BrowserRouter>
+                <Header />
                 <Routes>
                     <Route path='/authorize' element={<AuthorizeApp />} />
                     <Route path='/' element={<Login />} />
@@ -21,10 +22,10 @@ export default function App() {
                     <Route path='/dashboard' element={<PrivateRoutes />} >
                         <Route path='' element={<Home />} />
                         <Route path='preferences' element={<Preferences />} />
-                        <Route path='logout' element={<Logout />} />
                     </Route>
                     <Route path='*' Component={UsersNotFound} />
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </div>
     )

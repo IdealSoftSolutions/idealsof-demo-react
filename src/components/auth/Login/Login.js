@@ -52,7 +52,6 @@ export default function Login() {
         <Form onSubmit={handleLogin} ref={form}>
             <div className="login-wrapper">
                 <h1>Log In</h1>
-
                 <div className='txt_field'>
                     <input
                         onChange={onChangeUsername} value={userName} type="text" required />
@@ -66,7 +65,7 @@ export default function Login() {
                     <label>Password</label>
                 </div>
                 <div className='pass'>Forgot Password?</div>
-                <button type="submit" className="submit">Submit</button>
+                <button type="submit" class="btn btn-primary">Sign in</button>
                 <CheckButton style={{ display: "none" }} ref={checkBtn} />
                 <div className="signup_link">Not a member ?
                     <a href='#'>Signup</a>
